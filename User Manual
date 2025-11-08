@@ -1,0 +1,92 @@
+User Manual
+1. Overview
+LaraBlogShuvam is a simple blog system built with Laravel. The application supports user authentication, post management, comments, and an admin panel. It uses Laravel Breeze for authentication and supports social login (Google, Facebook). Users are divided into Admin and Regular User, each with different access and capabilities.
+
+2. User Authentication
+2.1 Login & Registration
+Registration: Only available for regular users. Admin accounts are created directly in the database with the role column set to admin.
+Admin credentials
+Email : admin@gmail.com
+Password: 12345678
+
+Login: Users and Admins use the same login page.
+Social Login: Users can log in using Google or Facebook.
+
+
+2.2 Workflow
+Navigate to http://localhost:8000/register to create a user account.
+Navigate to http://localhost:8000/login to log in (for both user & admin).
+Upon successful login, users are redirected to the Home Page showing all blog posts.
+
+3. User Roles and Permissions
+
+Admin:
+Manage all posts and users, view user/post/comment counts, access admin panel.
+User:
+Create, edit, and delete their own posts and comments. View all posts and comment on them.
+
+CRUD actions for posts and comments are controlled via Laravel Policies:
+PostPolicy → controls permissions on the Post model.
+CommentPolicy → controls permissions on the Comment model.
+
+
+4. Home Page (Blog Listing)
+Displays all blog posts for both Admins and Users.
+Each post displays:
+Title
+content
+Author
+Created At	
+"View" button to go to the Post Details Page
+
+
+4.1 Conditional Navigation
+Admin Menu: Visible in the navbar if the logged-in user is an admin. Links to the Admin Panel.
+
+5. Post Management
+CRUD Operations:
+Users can create new posts.
+Users can edit or delete only their own posts.
+Admins can manage all posts.
+
+6. Comments
+Users can comment on any post.
+CRUD Operations:
+Edit/Delete only their own comments.
+Admins can manage all comments if needed.
+
+7. Admin Panel
+7.1 Access
+Accessible only to Admin users via middleware check.
+URL: http://localhost:8000/admin/dashboard
+
+7.2 Features
+Dashboard shows counts:
+Number of Users
+Number of Posts
+Number of Comments
+
+Manage all Users: View list, Delete users
+Manage all Posts: View list ,Delete any post
+
+
+8. Advanced Routing
+Route groups are used.
+Route Model Binding: Automatically resolves Post and Comment models from route parameters.
+Named Routes: Used for consistent and readable links.
+
+
+9. Middleware
+Custom Middleware:
+Store user activities in database table.
+Checks user roles for protected routes.
+
+
+10. Service Providers
+BlogServiceProvider:
+Calculates and shares global data such as: Total users, Total posts, Total comments.
+Calculated data available in views (e.g., in admin panel dashboard).
+
+12. Testing Features
+Unit and Feature testing implemented using Laravel’s testing system.Post models tested.
+
