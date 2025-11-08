@@ -1,0 +1,24 @@
+Installation & Running Instructions
+1. Prerequisites
+Before installing the project, ensure your system has the following:
+PHP 8.2 or higher.
+Composer (for PHP dependencies)
+Node.js & npm (for frontend assets)
+MySQL
+XAMPP / LAMP installed for running local server
+
+2. Project Setup
+
+Step 1: Clone the Project
+Clone the Laravel project to your local environment:
+Step 2: Install PHP Dependencies
+Install all PHP dependencies including the vendor folder via Composer:
+Step 3: Install Node Modules
+Install frontend dependencies required for Laravel Breeze and other assets:
+Step 4: Configure Environment
+Copy the .env.example file to .env:
+2. Generate an application key:
+2. Running the Project
+Start your XAMPP / LAMP server (Apache + MySQL).
+Start Laravel development server:
+
